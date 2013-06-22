@@ -9,3 +9,5 @@ A global fart monitor. This script adds two commands to the game:
 + `/jsp fart`: The player farts, raising his or her fart level.
 + `/jsp sniff`: The player inhales deeply, gathering a sense of the global fart 
   level. This command displays the fart leaderboard for the server.
+
+![farts.js screenshot](http://i.imgur.com/fpnQh5v.png)
