@@ -11,9 +11,6 @@ Drone.extend('hovel', function(material){
     this.chkpt('hovel');
     this.box(material, 3, 3, 3); // 3x3x5 prism
 
-    // Hollow out the middle and place doors
-    this.right(1).box(0,1,2,4).door().fwd(3).door();
-    this.move('hovel');
     // Add upper lip
     this.up(2).back(1).left(1).box(material,5,1,5);
     this.move('hovel');
@@ -22,6 +19,10 @@ Drone.extend('hovel', function(material){
     this.move('hovel');
     // Add some torches for a touch of class
     this.back(1).up(1).box(50,1,1,1).right(2).box(50,1,1,1);
+    this.fwd(4).box(50,1,1,1).left(2).box(50,1,1,1);
+    this.move('hovel');
+    // Hollow out the middle and place doors
+    this.right(1).box(0,1,2,4).door().fwd(3).door();
     this.move('hovel');
 });
 
