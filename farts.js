@@ -14,7 +14,14 @@ var farts = farts || plugin("farts", {
         player.sendMessage(farter + " has farted " + fartCount + " times");
     },
     fartStrength: 0.5   // The explosive yield of fartSplosions
-}, true);
+}, true),
+    getKeys = function(obj){
+        var keys = [];
+        for(var key in obj){
+            keys.push(key);
+        }
+        return keys;
+    };
 
 farts.store.players = farts.store.players || {};
 
@@ -35,7 +42,7 @@ ready(function(){
         utils.foreach( server.onlinePlayers, farts.fartAlarm, self );
     });
     command("sniff", function(params){
-        var gassyPlayers = Object.keys(farts.store.players);
+        var gassyPlayers = getKeys(farts.store.players);
         utils.foreach(gassyPlayers, farts.smellFarts, self);
     });
 });
