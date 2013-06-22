@@ -20,6 +20,9 @@ Drone.extend('hovel', function(material){
     // Fences along the outside (safety first!)
     this.up(3).back(2).box(85,3,1,1).fwd(6).box(85,3,1,1);
     this.move('hovel');
+    // Add some torches for a touch of class
+    this.back(1).up(1).box(50,1,1,1).right(2).box(50,1,1,1);
+    this.move('hovel');
 });
 
 // -- Builds the slum out of many hovels. Defaults to 7x3 (oak)
@@ -39,7 +42,7 @@ Drone.extend('slum', function(length, height, material){
         this.move('slum');
         this.up(3*j);
         for (var i=0; i<length; i++){
-            this.hovel(material).right(3);
+            this.hovel(material).right(2);
         }
     }
 });
