@@ -16,4 +16,4 @@ A global fart monitor. This script adds two commands to the game:
 Extends the drone to enable quick deployment of villager slums. To promote
 *breeding*.
 
-![slum.js screenshot](http://i.imgur.com/X8lw1eP.png)
+![slum.js screenshot](http://i.imgur.com/D1BmBdG.png)
