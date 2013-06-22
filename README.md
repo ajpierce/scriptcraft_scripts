@@ -11,3 +11,9 @@ A global fart monitor. This script adds two commands to the game:
   level. This command displays the fart leaderboard for the server.
 
 ![farts.js screenshot](http://i.imgur.com/fpnQh5v.png)
+
+## slum.js
+Extends the drone to enable quick deployment of villager slums. To promote
+*breeding*.
+
+![slum.js screenshot](http://i.imgur.com/X8lw1eP.png)
