@@ -2,34 +2,34 @@ var farts = farts || plugin("farts", {
     // -- Class Variables
     maxFartStrength: 0.6,   // Max Explosive yield of a fartSplosion
     fartEvents : {
-        // 2% chance to fart when changing currently held item
-        "player.PlayerItemHeldEvent": 0.02,
-        // 15% chance to fart when dropping an item
-        "player.PlayerDropItemEvent": 0.15,
-        // 2% chance to fart on chat event
-        "player.PlayerChatEvent": 0.02,
-        // 2% chance to fart when joining the server
-        "player.PlayerJoinEvent": 0.02,
-        // 20% chance to fart when consuming
-        "player.PlayerItemConsumeEvent": 0.20,
-        // 2% chance to fart when stepping through a portal
-        "player.PlayerPortalEvent": 0.02,
-        // 5% chance to fart when toggling sneak
-        "player.PlayerToggleSneakEvent": 0.05,
-        // 05% chance to fart when starting a sprint
-        "player.PlayerToggleSprintEvent": 0.05,
+        // 0.2% chance to fart when changing currently held item
+        "player.PlayerItemHeldEvent": 0.002,
+        // 1.5% chance to fart when dropping an item
+        "player.PlayerDropItemEvent": 0.015,
+        // 0.2% chance to fart on chat event
+        "player.PlayerChatEvent": 0.002,
+        // 0.2% chance to fart when joining the server
+        "player.PlayerJoinEvent": 0.002,
+        // 2% chance to fart when consuming
+        "player.PlayerItemConsumeEvent": 0.020,
+        // 0.2% chance to fart when stepping through a portal
+        "player.PlayerPortalEvent": 0.002,
+        // 0.5% chance to fart when toggling sneak
+        "player.PlayerToggleSneakEvent": 0.005,
+        // 0.5% chance to fart when starting a sprint
+        "player.PlayerToggleSprintEvent": 0.005,
         // 100% chance to fart when flying
         "player.PlayerToggleFlightEvent": 1.00,
-        // 10% chance to fart on respawn
-        "player.PlayerRespawnEvent": 0.10,
-        // 1% chance to fart when getting exp
-        "player.PlayerExpChangeEvent": 0.01,
-        // 2% chance to fart when emptying or filling a bucket
-        "player.PlayerBucketEmptyEvent": 0.02,
-        "player.PlayerBucketFillEvent": 0.02,
-        // 2% chance to fart when entering or leaving bed
-        "player.PlayerBedEnterEvent": 0.02,
-        "player.PlayerBedLeaveEvent": 0.02
+        // 0.1% chance to fart on respawn
+        "player.PlayerRespawnEvent": 0.010,
+        // 0.1% chance to fart when getting exp
+        "player.PlayerExpChangeEvent": 0.001,
+        // 0.2% chance to fart when emptying or filling a bucket
+        "player.PlayerBucketEmptyEvent": 0.002,
+        "player.PlayerBucketFillEvent": 0.002,
+        // 0.2% chance to fart when entering or leaving bed
+        "player.PlayerBedEnterEvent": 0.002,
+        "player.PlayerBedLeaveEvent": 0.002
     },
 
     // -- Class Functions
