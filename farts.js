@@ -44,7 +44,7 @@ var farts = farts || plugin("farts", {
         // Configure fart variables
         fartSplosionProbability = (typeof
             fartSplosionProbability === "undefined") ?
-            0.2 : fartSplosionProbability;
+            0.05 : fartSplosionProbability;
 
         var fartSplosionChance = Math.floor(
                 Math.random() / fartSplosionProbability),
@@ -57,7 +57,7 @@ var farts = farts || plugin("farts", {
 
         // Notify all players that a fart has occurred
         utils.foreach(server.onlinePlayers, farts.fartAlarm, player);
-        //TODO: Smoke effect
+        farts.fartCloud(player, 3);
     },
     /**
     * Function that has a probability of producting a fart for the
@@ -73,6 +73,21 @@ var farts = farts || plugin("farts", {
         if( chance === 0 ){
             farts.fart(player);
         }
+    },
+    /**
+    * Generate a fart cloud on top of the player for X seconds
+    */
+    fartCloud: function(player, seconds){
+        var i = 0,
+            playerLoc = player.getLocation(),
+            world = player.world,
+            smokeEffect = function(){
+                world.playEffect(playerLoc, org.bukkit.Effect.SMOKE, 10);
+                i++;
+            },
+            hasNext = function(){ return i < (20*seconds); };
+
+        utils.nicely( smokeEffect, hasNext, undefined, 1 );
     },
     incrementFart: function(player){
         farts.store.players[player.name] === 0 ?
