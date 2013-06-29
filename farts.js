@@ -60,7 +60,7 @@ var farts = farts || plugin("farts", {
         farts.fartCloud(player, 3);
     },
     /**
-    * Function that has a probability of producting a fart for the
+    * Function that has a probability of producing a fart for the
     * given player. Also allows specification of fartSplostion
     * probability
     */
