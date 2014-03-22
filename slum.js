@@ -1,8 +1,7 @@
 /**
 * slum.js: Extend the drone to build a village slum for rapid villager spawning
 */
-load('../drone/drone.js');
-
+var Drone = require('../drone').Drone;
 // -- Slum subcomponent; a villager cell
 Drone.extend('hovel', function(material){
     // If material is not specified, default to oak planks
