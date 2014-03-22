@@ -3,14 +3,14 @@
 *              the spawning of Zombie Pigmen for the accumulation of gold and xp
 */
 
-load('../drone/drone.js');
+var Drone = require('../drone').Drone,
+  utils = require('utils');
 
 Drone.extend('portalCube', function(){
     var air = 0,
         obsidian = 49,  // org.bukkit.Material.OBSIDIAN;
         portal = 90,
-        trapDoor = 96,
-        world = self.getWorld();
+        trapDoor = 96;
     
     this.chkpt('portalCube');
 
@@ -39,6 +39,7 @@ Drone.extend('portalCube', function(){
 * without crashing the server or kicking players off
 **/
 Drone.extend('portalTree', function(length, height, depth){
+  console.log('length='+ length + ',height=' + height + ',depth=' + depth);
     this.chkpt('portalTree');
     var i = 0,
         j = 0,
@@ -58,15 +59,17 @@ Drone.extend('portalTree', function(length, height, depth){
             k++;
         },
         buildCube = function(){
-            echo("Building cube " + i + " in row " + j + ", floor " + k);
+	    console.log('building cube: ' + i);
             drone.right(3).portalCube();
             i++;
         },
         buildRow = function() {
+	    console.log('building row: ' + j);
             drone.move('portalRow').fwd(j*3);
             utils.nicely( buildCube, nextCube, resetRow, 20 );
         },
         buildStory = function(){
+	    console.log('building story: ' + k);
             drone.move('portalTree').up(4*k);
             drone.chkpt('portalRow');
             utils.nicely( buildRow, nextRow, resetStory, 200 );
@@ -87,7 +90,6 @@ var goldFarm = goldFarm || plugin("goldFarm", {
             maxX = loc.getX() + 2,
             maxY = loc.getY() + 1,
             maxZ = loc.getZ() + 2,
-            world = self.getWorld(),
             // Faces to which we want the trapdoor attached, in order.
             faces = [0x1, 0x0, 0x0, 0x1], // South, North, North, South
             attachedFace = 0,
@@ -97,7 +99,7 @@ var goldFarm = goldFarm || plugin("goldFarm", {
         for( x=minX; x<maxX; x++ ){
             for( y=minY; y<maxY; y++ ){
                 for( z=minZ; z<maxZ; z++ ){
-                    block = world.getBlockAt(x, y, z);
+                    block = loc.world.getBlockAt(x, y, z);
                     if( block.getType() == org.bukkit.Material.TRAP_DOOR ){
                         data = block.getData();
                         data = data | faces[attachedFace % 4]; // Attach it to correct block
@@ -113,23 +115,22 @@ var goldFarm = goldFarm || plugin("goldFarm", {
     * Builds a portal tree that is x wide, z long, and y tall
     * height is determined by the height param
     */
-    buildPortalTree: function(width, floors, depth, height){
+    buildPortalTree: function(width, floors, depth, height, sender){
         width = (typeof width === "undefined")? 10 : parseFloat(width);
         floors = (typeof floors === "undefined")? 10 : parseFloat(floors);
         depth = (typeof depth === "undefined")? 30 : parseFloat(depth);
         height = (typeof height === "undefined")? 10 : parseFloat(height);
 
-        var d = new Drone();
+        var d = new Drone(sender);
         d.up(height).portalTree(width, floors, depth);
     }
 });
 
-ready(function(){
-    command("portalTree", function(params){
-        goldFarm.buildPortalTree(params[0], params[1], params[2], params[3]);
-    });
-    command("portalCube", function(params){
-        var d = new Drone();
-        d.portalCube();
-    });
+command("portalTree", function(params, sender ) {
+  goldFarm.buildPortalTree(params[0], params[1], params[2], params[3], sender);
 });
+command("portalCube", function(params, sender ) {
+  var d = new Drone(sender);
+  d.portalCube();
+});
+
